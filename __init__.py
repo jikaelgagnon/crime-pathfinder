@@ -7,4 +7,4 @@ app.config['SECRET_KEY'] = 'banana'
 app.app_context().push() # Needed to create db
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 
-from crime_pathfinder import routes
+#from crime-pathfinder import routes
