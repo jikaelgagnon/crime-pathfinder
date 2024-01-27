@@ -1,0 +1,13 @@
+<form action="{{url_for('predict')}}" method="post">
+
+    <select name="comp_select" class="Input">
+          {% for o in data %}
+          <option value="{{ o.gender }}">{{ o.gender }}</option>
+          {% endfor %}
+    </select>
+    
+    <select name="comp_select1" class="Input">
+          {% for o in data1 %}
+          <option value="{{ o.noc }}">{{ o.noc }}</option>
+          {% endfor %}
+     </select>
