@@ -1,8 +1,6 @@
 from flask import Flask, render_template
+from crime_pathfinder import app
 
-app = Flask(__name__)
-
-@app.route('/hello/')
-@app.route('/hello/<name>')
-def hello(name=None):
-    return render_template('hello.html', name=name)
+@app.route('/')
+def home():
+    return '<h1>Hello</h1>'
