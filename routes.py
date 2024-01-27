@@ -3,4 +3,9 @@ from crime_pathfinder import app
 
 @app.route('/')
 def home():
-    return '<h1>Hello</h1>'
+    
+
+@app.route('/map')
+def map():
+    return render_template('map.html')
+
