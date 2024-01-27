@@ -1,13 +1,11 @@
-<form action="{{url_for('predict')}}" method="post">
+{% extends 'base.html' %}
 
-    <select name="comp_select" class="Input">
-          {% for o in data %}
-          <option value="{{ o.gender }}">{{ o.gender }}</option>
-          {% endfor %}
-    </select>
-    
-    <select name="comp_select1" class="Input">
-          {% for o in data1 %}
-          <option value="{{ o.noc }}">{{ o.noc }}</option>
-          {% endfor %}
-     </select>
+{% block content %}
+    <h1>{% block title %} Messages {% endblock %}</h1>
+    {% for message in messages %}
+        <div class='message'>
+            <h3>{{ message['title'] }}</h3>
+            <p>{{ message['content'] }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
