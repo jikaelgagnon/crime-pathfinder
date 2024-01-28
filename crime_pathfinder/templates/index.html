@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} Messages {% endblock %}</h1>
-    {% for message in messages %}
+    <h1>{% block title %} datalist {% endblock %}</h1>
+    {% for message in datalist%}
         <div class='message'>
-            <h3>{{ message['title'] }}</h3>
-            <p>{{ message['content'] }}</p>
+            <h3>{{ message['crime'] }}</h3>
+            <p>{{ message['description'] }}</p>
         </div>
     {% endfor %}
 {% endblock %}
