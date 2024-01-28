@@ -8,6 +8,6 @@ app.config['SECRET_KEY'] = 'banana'
 app.app_context().push() # Needed to create db
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 
-datalist = []
+app.config['User reported'] = []
 
 from crime_pathfinder import routes

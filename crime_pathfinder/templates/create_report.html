@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h1>{% block title %}Report a crime{% endblock %}</h1>
+    <form method="post">
+       <div class="form-group">
+              <label for="Crime">Crime</label>
+              <input class="form-control" type="text" name="Crime"
+                     value="{{ request.form['Crime'] }}"></input>
+       </div>  
+
+       <div class="form-group">
+              <label for="Location">Location</label>
+              <input class="form-control" type="text" name="Location"
+              value="{{ request.form['Location'] }}"></input>
+       </div>  
+       <div class="form-group">
+              <label for="Time">Time of day</label>
+              <input class="form-control" type="text" name="Time"
+                     value="{{ request.form['Time'] }}"></input>
+       </div>
+
+       <div class="form-group">
+       <label for="Description">Description</label>
+       <textarea class="form-control" name="Description"
+                     rows="15"
+                     cols="60"
+                     >{{ request.form['Description'] }}</textarea>
+       </div>
+       <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+{% endblock %}

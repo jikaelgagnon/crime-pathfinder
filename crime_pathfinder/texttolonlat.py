@@ -1,8 +1,8 @@
 import requests
 
-def geocode_address(api_key, address):
+def geocode_address(address):
     base_url = "https://maps.googleapis.com/maps/api/geocode/json"
-
+    api_key = 'AIzaSyB0OTXJmDBC3Al_FiDhMojWLK9F8Obm5x8'
     # Prepare parameters for the API request
     params = {
         'address': address,

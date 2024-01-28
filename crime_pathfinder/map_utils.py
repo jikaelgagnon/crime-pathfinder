@@ -41,8 +41,7 @@ def preprocess_df(df):
     return df.dropna()
 
 def get_map(df):
-    fig = px.scatter_mapbox(df, lat="LATITUDE", lon="LONGITUDE",  color="CATEGORIE",
-                  color_continuous_scale=px.colors.cyclical.IceFire, size_max=5, zoom=10)
+    fig = px.scatter_mapbox(df, lat="LATITUDE", lon="LONGITUDE",  color="CATEGORIE" ,size_max=100, zoom=10)
     return fig
 
 def get_df(year,categories,times_of_day,limit='100000'):
