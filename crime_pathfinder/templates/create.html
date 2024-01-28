@@ -3,20 +3,34 @@
 {% block content %}
     <h1>{% block title %} Add a New Message {% endblock %}</h1>
     <form method="post">
-        <label for="title">Title</label>
+        <label for="Crime">Crime</label>
         <br>
-        <input type="text" name="title"
+        <input type="text" name="Crime"
                placeholder="Message title"
-               value="{{ request.form['title'] }}"></input>
+               value="{{ request.form['Crime'] }}"></input>
         <br>
 
-        <label for="content">Message Content</label>
+        <label for="Location">Location</label>
         <br>
-        <textarea name="content"
+        <input type="text" name="Location"
+               placeholder="Message title"
+               value="{{ request.form['Location'] }}"></input>
+        <br>
+        
+        <label for="Time">Time of day</label>
+        <br>
+        <input type="text" name="Time"
+               placeholder="Message title"
+               value="{{ request.form['Time'] }}"></input>
+        <br>
+
+        <label for="Description">Description</label>
+        <br>
+        <textarea name="Description"
                   placeholder="Message content"
                   rows="15"
                   cols="60"
-                  >{{ request.form['content'] }}</textarea>
+                  >{{ request.form['Description'] }}</textarea>
         <br>
         <button type="submit">Submit</button>
     </form>

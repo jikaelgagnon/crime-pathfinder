@@ -1,14 +1,13 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from crime_pathfinder import db , app
 
-app = Flask(__name__)
 # configure the SQLite database, relative to the app instance folder
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
 # initialize the app with the extension
-db = SQLAlchemy(app)
 
 class Incident(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    time = db.Column(db.Integer, primary_key=True)
     crime_type = db.Column(db.String(255))
     longitude = db.Column(db.Float)
     latitude = db.Column(db.Float)
