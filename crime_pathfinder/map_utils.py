@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
 import plotly.express as px
+import numpy as np
 MAPBOX_API_KEY = 'pk.eyJ1IjoibW9ua3oxMSIsImEiOiJja3ZjcGpkcmNhemljMnBuemllb294Z20yIn0.LFHcV2_PcE_wc5ttNnMM1g'
 px.set_mapbox_access_token(MAPBOX_API_KEY)
 
@@ -26,9 +27,14 @@ def filter_df(df, categories, times_of_day):
     df = df[df['QUART'].isin(times_of_day)]
     return df
 
+def add_random_offset(coord, offset=0.0001):
+    return coord + np.random.uniform(-offset,offset)
+
 def preprocess_df(df):
     df["LONGITUDE"] = pd.to_numeric(df['LONGITUDE'], errors="coerce")
     df["LATITUDE"] = pd.to_numeric(df['LATITUDE'], errors="coerce")
+    df["LONGITUDE"] = df["LONGITUDE"].apply(add_random_offset)
+    df["LATITUDE"] = df["LATITUDE"].apply(add_random_offset)
     df["CATEGORIE"] = df["CATEGORIE"].map(categories_fr_to_en)
     df["QUART"] = df["QUART"].map(times_of_day_fr_to_en)
 
