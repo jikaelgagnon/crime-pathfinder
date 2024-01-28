@@ -17,25 +17,22 @@ messages = [{'title': 'Message One',
 
 @app.route('/', methods=('GET', 'POST'))
 def index():
-    # form = MapForm()
-    # if request.method == "POST" and form.validate_on_submit():
-    #     flash('Map data submitted succesfully!', 'success')
-    #     categories = form.categories.data
-    #     times_of_day = form.times_of_day.data
+    form = MapForm()
+    if request.method == "POST" and form.validate_on_submit():
+        flash('Map data submitted succesfully!', 'success')
+        categories = form.categories.data
+        times_of_day = form.times_of_day.data
+        fig = generate_map(2024,categories=categories,times_of_day=times_of_day)
+        div = fig.to_html(full_html=False)
+        return render_template_string('''
+            <head>
+            <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>    
+            </head>
+            <body>
+            {{ div_placeholder|safe }}
+            </body>''', div_placeholder=div)
+    return render_template('register.html', title='Register', form=form)
 
-    #     return render_template('map_display.html', graphJSON=graphJSON)
-    # return render_template('register.html', title='Register', form=form)
-    categories_en = ['Breaking and entering','Theft from a vehicle/theft of vehicle parts','Vehicle theft','General damages','Theft with violence','Murder']
-    times_of_day_en = ['Day','Evening','Night']
-    fig = generate_map(2024,categories=categories_en,times_of_day=times_of_day_en)
-    div = fig.to_html(full_html=False)
-    return render_template_string('''
-        <head>
-        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>    
-        </head>
-        <body>
-        {{ div_placeholder|safe }}
-        </body>''', div_placeholder=div)
     # fig.show()
 
 @app.route('/create/', methods=('GET', 'POST'))
